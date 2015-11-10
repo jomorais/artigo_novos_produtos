@@ -99,7 +99,7 @@
 % result in citation numbers being automatically sorted and properly
 % "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
 % cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
+% \citep{•}\cite will automatically add leading space, if needed. Use cite.sty's
 % noadjust option (cite.sty V3.8 and later) if you want to turn this off
 % such as if a citation ever needs to be enclosed in parenthesis.
 % cite.sty is already installed on most LaTeX systems. Be sure and use
@@ -322,7 +322,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Análise de desempenho de algoritmo de segmentação de imagem estatística não-paramétrica no RaspberryPI V2 com sistema operacional linux}
+\title{Análise de desempenho de algoritmo de segmentação de imagem estatística não-paramétrica utilizando o RaspberryPI V2}
 
 
 % author names and affiliations
@@ -334,16 +334,18 @@ Escola Superior de Tecnologia\\
 Manaus, Amazonas 69000-000\\
 Email: joaci.morais@gmail.com}
 \and
-\IEEEauthorblockN{Homer Simpson}
-\IEEEauthorblockA{Twentieth Century Fox\\
-Springfield, USA\\
-Email: homer@thesimpsons.com}
-\and
 \IEEEauthorblockN{Nilson Oliveira}
 \IEEEauthorblockA{Universidade do Estado do Amazonas\\
 Escola Superior de Tecnologia\\
 Manaus, Amazonas 69044-520\\
-Email: nilsonmont.o@gmail.com}}
+Email: nilsonmont.o@gmail.com}
+\and
+\IEEEauthorblockN{Antônio Soares}
+\IEEEauthorblockA{Universidade do Estado do Amazonas\\
+Escola Superior de Tecnologia\\
+Manaus, Amazonas 69000-000\\
+Email: antoniodepadua27@gmail.com}
+}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -563,9 +565,13 @@ The authors would like to thank...
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{IEEEhowto:sanches}
+S.R.R.~Sanches, \emph{Método de Segmentação de Vídeo em Tempo Real para Aplicações em Teleimersão}, \hskip 1em plus
+  0.5em minus 0.4em\relax São Paulo, Brasil: USP, 2012.
+  
+\bibitem{IEEEhowto:oliveira}
+J.P.~Oliveira, \emph{FPGA Architecture for Object Segmentation in Realtime}, \hskip 1em plus
+  0.5em minus 0.4em\relax Florence, Italy: EUSIPCO, 2006.
 
 \end{thebibliography}
 
