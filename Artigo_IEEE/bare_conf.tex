@@ -333,7 +333,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Análise de desempenho de algoritmo de segmentação de imagem estatística não-paramétrica utilizando o RaspberryPI V2}
+\title{Análise de desempenho de algoritmo de segmentação de imagem em Plataformas Embarcadas Linux}
 
 
 % author names and affiliations
@@ -452,7 +452,7 @@ A figura \ref{fig:sim_pc} mostra o resultado da simulação feita em um Notebook
 \begin{figure}[!t]
 \centering
 \includegraphics[width=2.5in]{Screen_PC_01}
-\caption{Resultado de simulação em Computador Intel Core I5}
+\caption{Resultado de simulação em PC (Intel I5)}
 \label{fig:sim_pc}
 \end{figure}
 
@@ -563,7 +563,11 @@ A figura \ref{fig:sim_pc} mostra o resultado da simulação feita em um Notebook
 
 
 \section{Conclusão}
-The conclusion goes here.
+Foi possível observar a grande quantidade de recursos disponibilizada pela linguagem Python, com destaque para as ferramentas de manipulação de imagens e de matrizes, que são de grande importância para o estudo em visão computacional. Outro ponto bastante interessante foi a portabilidade das aplicações desenvolvidas com base nessa linguagem, de modo que nenhuma alteração se fez necessária quando da execução do \textit{script} desenvolvido em uma plataforma embarcada.
+
+No entanto, ficaram bastante claras as limitações da plataforma RPI2 com relação a um PC convencional devido à drástica queda na taxa de quadros processados por segundo. Considerando tal fator, serão verificados, em etapas subsequentes de desenvolvimento do presente trabalho, alternativas de processamento paralelo, fazendo uso de todos os núcleos de processamento disponíveis na plataforma de modo a avaliar a possibilidade de aumento da taxa de quadros ainda usando exclusivamente o processador.
+
+Outros testes também serão feitos utilizando a plataforma CB2, que além de apresentar maiores capacidades de processamento ainda oferece a possibilidade de uso da GPU para processamento arbitrário, possibilitando que a parte pesada de cálculos de histogramas seja feita diretamente pelo \textit{chipset} de vídeo, o que teria o potencial de elevar sobremaneira a quantidade de processamento de quadros.
 
 
 
@@ -572,10 +576,8 @@ The conclusion goes here.
 
 
 % use section* for acknowledgment
-\section*{Agradecimentos}
-
-
-The authors would like to thank...
+%section*{Agradecimentos}
+%The authors would like to thank...
 
 
 
