@@ -333,29 +333,30 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Análise de desempenho de algoritmo de segmentação de imagem em Plataformas Embarcadas Linux}
+\title{Comparação de desempenho de algoritmo de segmentação de imagem entre Plataformas Linux}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Joaci Morais}
-\IEEEauthorblockA{Universidade do Estado do Amazonas\\
-Escola Superior de Tecnologia\\
-Manaus, Amazonas 69000-000\\
-Email: joaci.morais@gmail.com}
-\and
-\IEEEauthorblockN{Nilson Oliveira}
+\author{
+
+\IEEEauthorblockN{Nilson Monteiro de Oliveira}
 \IEEEauthorblockA{Universidade do Estado do Amazonas\\
 Escola Superior de Tecnologia\\
 Manaus, Amazonas 69044-520\\
 Email: nilsonmont.o@gmail.com}
-\and
-\IEEEauthorblockN{Antônio Soares}
-\IEEEauthorblockA{Universidade do Estado do Amazonas\\
-Escola Superior de Tecnologia\\
-Manaus, Amazonas 69000-000\\
-Email: antoniodepadua27@gmail.com}
+%\IEEEauthorblockN{Joaci Morais}
+%\IEEEauthorblockA{Universidade do Estado do Amazonas\\
+%Escola Superior de Tecnologia\\
+%Manaus, Amazonas 69000-000\\
+%Email: joaci.morais@gmail.com}
+%\and
+%\IEEEauthorblockN{Antônio Soares}
+%\IEEEauthorblockA{Universidade do Estado do Amazonas\\
+%Escola Superior de Tecnologia\\
+%Manaus, Amazonas 69000-000\\
+%Email: antoniodepadua27@gmail.com}
 }
 
 % conference papers do not typically use \thanks and this command
@@ -395,7 +396,12 @@ Email: antoniodepadua27@gmail.com}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-The abstract goes here.
+%This paper intends to do a performance analysis of a background subtraction algorithm in different %embedded platforms, such as Raspberry Pi 2 and CubieBoard 2. The goal is to verify its performance in %both CPU and GPU in order to determine if any of then is appropriate to do real time image operations.
+Este artigo tem por objetivo realizar uma análise comparativa de performance de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra um Computador Intel Core I5. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma linux embarcada.
+
+%\vspace{8pt}
+
+Palavras-Chave: Linux, Python, OpenCV, Segmentação de Imagem
 \end{abstract}
 
 % no keywords
@@ -417,18 +423,18 @@ The abstract goes here.
 
 \section{Introdução}
 % no \IEEEPARstart
-Muitas aplicações na área de visão computacional utilizam como etapa inicial a subtração de fundo \cite{IEEEhowto:sobral}, das quais podem se destacar: segurança, controle de tráfego de veículos, teleconferências, automação de ambientes e entretenimento \cite{IEEEhowto:parolin}. Com tamanha aplicabilidade, esta área se tornou um relevante objeto de estudo da comunidade acadêmica e dispõe de inúmeros algoritmos para a solução do referido problema, cada um com suas respectivas características de desempenho e eficácia. Muitos destes algoritmos já foram testados e aplicados em sistemas computacionais robustos ou em hardware dedicado\cite{IEEEhowto:oliveira}, porém ainda há poucas análises de aplicação utilizando as plataformas de desenvolviemento de baixo custo disponíveis no mercado.
+Muitas aplicações na área de visão computacional utilizam como etapa inicial a subtração de fundo \cite{IEEEhowto:sobral}, das quais podem se destacar: segurança, controle de tráfego de veículos, teleconferências, automação de ambientes e entretenimento \cite{IEEEhowto:parolin}. Com tamanha aplicabilidade, esta área se tornou um relevante objeto de estudo da comunidade acadêmica e dispõe de inúmeros algoritmos para a solução do referido problema, cada um com suas respectivas características de desempenho e eficácia. Muitos destes algoritmos já foram testados e aplicados em sistemas computacionais robustos ou em hardware dedicado\cite{IEEEhowto:oliveira}, porém ainda há poucas análises de aplicação utilizando as plataformas de desenvolvimento de baixo custo disponíveis no mercado.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
-O uso dessas novas plataformas tem se difundido em grande parte pelo seu custo acessível, mas também pelos constantes incrementos em suas capacidades de processamento, o que as habilita a desempenhar tarefas cada vez mais complexas. Nesse contexto, propõe-se a avaliação de desempenho computacional de um algoritmo, não paramétrico e estatístico descrito em \cite{IEEEhowto:horprasert}, embarcado na plataforma Raspberry PI 2 (RPI2) e CubieBoard 2 (CB2), a fim de que se tenha uma estimativa da capacidade destas plataformas de processar imagens e efetuar a subtração do fundo em tempo real, a 30 quadros por segundo, com a máxima resolução possível.
+O uso dessas novas plataformas tem se difundido em grande parte pelo seu custo acessível, mas também pelos constantes incrementos em suas capacidades de processamento, o que as habilita a desempenhar tarefas cada vez mais complexas. Nesse contexto, propõe-se a avaliação de desempenho computacional de um algoritmo, não paramétrico e estatístico descrito em \cite{IEEEhowto:horprasert}, embarcado na plataforma Raspberry PI 2 (RPI2) e comparado com o desempenho da mesma aplicação em um computador Intel Core I5, a fim de que se tenha uma estimativa da diferença de desempenho entre estas plataformas e para que se possa avaliar a viabilidade de embarcar o algoritmo para uma possível aplicação \textit{stand-alone} no RPI2.
 
 
-O RPI2  é composto por um SoC (\textit{System on Chip}) com CPU de quatro núcleos a 900MHz e GPU (\textit{Graphic Processor Unit}) VideoCore IV a 250MHz, já a CubieBoard é baseada no SoC A20, com CPU de dois núcleos a 1GHz e GPU também de dois núcleos a 500MHz. Pretende-se efetuar a implementação do referido algoritmo para execução tanto na CPU, em Python, quanto na GPU das plataformas, quando possível, bem como utilizar a biblioteca OpenCV para então montar um comparativo de todos os resultados obtidos.
+O RPI2  é composto por um SoC (\textit{System on Chip}) com CPU de quatro núcleos a 900MHz e arquitetura de 32 Bits, já o computador é um Intel Core I5-3337U, com CPU de dois núcleos a 1.8GHz e arquitetura de 64 Bits. Pretende-se efetuar a implementação do referido algoritmo para execução em ambas as plataformas em Python juntamente com a biblioteca OpenCV, objetivando a execução do mesmo em um único núcleo da CPU em cada uma das plataformas, respectivamente.
 
 
 
-\hfill 15 de Dezembro de 2015
+\hfill 23 de Maio de 2016
 
 \section{Segmentação de Imagem}
 Conforme proposto por Horpraset \textit{et al.} \cite{IEEEhowto:horprasert}, que descreve uma modelagem de cor que separa a imagem em duas componentes principais: brilho e cromaticidade, a primeira etapa do processo de segmentação é a modelagem do fundo, classificando cada pixel quanto à cor esperada, seu desvio padrão de cor e variações de desbalanço de brilho (\(\alpha\)) e desbalanço de cromaticidade (CD). Na sequencia é feita a normalização dos histogramas de \(\alpha\) e CD, uma vez que essas grandezas não apresentam distribuições gaussianas. Por fim, é possível fazer a classificação dos pixels em quatro categorias: Fundo Original (B), Sombra (S), Destaque de Fundo (H) e Objeto de Movimento (F), das quais a última é a de principal interesse, mapeando a localização da imagem que apresenta os limiares desejados de \(\alpha\) e CD para a extração do satisfatória da imagem de fundo.
@@ -444,16 +450,27 @@ O referido algoritmo foi implementado na linguagem Python, que tem sido largamen
 \label{fig:algoritmo}
 \end{figure}
 
-Em linux, o driver responsável por comunicar com dispositivos de vídeos é o \textit{Video For Linux - V4L2}, através do qual é possível acessar uma série de configurações da câmera utilizada com o auxílio da aplicação \textit{v4l2-ctl}. Essas configurações permitem a fixação de alguns parâmetros, que normalmente são alterados dinamicamente em câmeras comuns, e que, portanto, prejudicam a análise de segmentação da imagem, uma vez que isso é feito com base em uma imagem prévia de fundo e seus respectivos histogramas de desbalanço de cor e cromaticidade. Desse modo, fixando parâmetros críticos, como Exposição e Saturação, foi possível obter uma boa estabilidade no processo de detecção de objetos e remoção do fundo.
+Em linux, o driver responsável por comunicar com dispositivos de vídeos é o \textit{Video For Linux - V4L2}, através do qual é possível acessar uma série de configurações da câmera utilizada com o auxílio da aplicação \textit{v4l2-ctl}. Essas configurações permitem a fixação de alguns parâmetros, que normalmente são alterados dinamicamente em câmeras comuns, e que, portanto, prejudicam a análise de segmentação da imagem, uma vez que isso é feito com base em uma imagem prévia de fundo e seus respectivos histogramas de desbalanço de cor e cromaticidade. Desse modo, fixando parâmetros críticos, como Exposição e Saturação, foi possível obter uma boa estabilidade no processo de detecção de objetos e remoção do fundo, abaixo são mostrados os comandos responsáveis por fixar os referidos parâmetros:
+
+\lstinputlisting[firstline=2, lastline=9]{config_cam.py}
 
 \section{Resultados}
-A figura \ref{fig:sim_pc} mostra o resultado da simulação feita em um Notebook com processador Intel Core I5 utilizando como câmera a sua Webcam integrada. Também foram feitos testes no RPI2 utilizando-se o mesmo código desenvido e utilizando um módulo de câmera próprio para a plataforma como fonte de imagens. A tabela \ref{tab:table_pc_rpi} mostra os primeiros resultados obtidos quando da execução do algoritmo implementado em Python tanto em um ambiente com muitos recursos de processamento quanto em um ambiente com severas restrições como o RPI2.
+As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa em um Notebook com processador Intel Core I5 e em um Raspberry Pi 2, respectivamente. No PC foi utilizado como câmera a webcam integrada enquanto que no RPI2 foi utilizado um módulo de câmera próprio para a plataforma como fonte de imagens. A tabela \ref{tab:table_pc} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 743 frames executada no Computador Intel Core I5, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando um computador o RPI2 com 728 amostras.
+
+Com base nos resultados obtidos fica evidente o impacto das restrições de processamento do RPI2 nas métricas da aplicação, onde observa-se que a média de quadros por segundo (fps - \textit{frames per second}) é consideravelmente menor. As figuras \ref{fig:processamento_pc} e \ref{fig:processamento_rpi} mostram a divisão do processamento com base nas médias de tempo necessário para a captura, processamento e visualização da imagem. Observa-se que no computador, com mais recursos de processamento, o cálculo e segmentação do frame responde por pouco mais de 26\% enquanto que no RaspberryPi supera a marca de 98\% do tempo de processamento de um único frame.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=2.5in]{Screen_PC_01}
 \caption{Resultado de simulação em PC (Intel I5)}
 \label{fig:sim_pc}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{Screen_RPI_01}
+\caption{Resultado de simulação no RPI2}
+\label{fig:sim_rpi}
 \end{figure}
 
 
@@ -534,19 +551,50 @@ A figura \ref{fig:sim_pc} mostra o resultado da simulação feita em um Notebook
 
 \begin{table}[h]\centering
 \renewcommand{\arraystretch}{1.3}
-\caption{Resultados de Testes em Python}
-\label{tab:table_pc_rpi}
-\begin{tabular}{|c|c|c|}
+\caption{Resultados de Testes Intel Core I5 - 743 Amostras}
+\label{tab:table_pc}
+\begin{tabular}{|c|c|c|c|c|}
 
 \hline
-\textbf{Plataforma} & \textbf{Resolução} & \textbf{FPS} \\\hline \hline
-\multirow{2}{*}{Notebook I5}		& 320x240 & 25 - 35	\\ \cline{2-3}
-								& 640x480 & 13 - 18	\\ \hline
-\multirow{2}{*}{Raspberry Pi 2}	& 320x240 & 4.5 - 7.2	\\ \cline{2-3}
-								& 640x480 & 0.8 - 1.3	\\ \hline
+\textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Show (ms)} \\\hline \hline
+Média			& 31.878	& 23.099	&	8.303	&	0.181	\\ \hline
+Desv. Padrão	& 2.825		& 2.846		&	1.565	&	0.042	\\ \hline
+Máximo			& 57.994	& 30.596 	&	19.748	&	0.709	\\ \hline
+Mínimo			& 24.909	& 2.933 	&	6.115	&	0.139	\\ \hline
 
 \end{tabular}
 \end{table}
+
+\begin{table}[h]\centering
+\renewcommand{\arraystretch}{1.3}
+\caption{Resultados de Testes no RPI2 - 728 Amostras}
+\label{tab:table_rpi}
+\begin{tabular}{|c|c|c|c|c|}
+
+\hline
+\textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Show (ms)} \\\hline \hline
+Média			& 5.733 & 1.594	&	176.295	&	1.254	\\ \hline
+Desv. Padrão	& 0.903 & 0.304	&	31.113	&	0.038	\\ \hline
+Máximo			& 7.555 & 2.457 &	344.158	&	1.584	\\ \hline
+Mínimo			& 2.878 & 1.057 &	129.112	&	1.207	\\ \hline
+
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{Grafico_processamento_I5}
+\caption{Divisão de Processamento Core I5}
+\label{fig:processamento_pc}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{Grafico_processamento_rpi2_single_core}
+\caption{Divisão de Processamento RPI2}
+\label{fig:processamento_rpi}
+\end{figure}
 
 
 % Note that the IEEE does not put floats in the very first column
@@ -627,6 +675,10 @@ T.~Horprasert et al., \emph{A Statistical Approach for Real-time Robust Backgrou
 H.~Fangohr, \emph{Introduction to Python for Computational Science and Engineering}, \hskip 1em plus
   0.5em minus 0.4em\relax Southampton, England: University of Southampton, 2015.
   
+\bibitem{IEEEhowto:micha}
+H.~Fangohr, \emph{High Performance Python - Practical Performant Programming for Humans}, \hskip 1em plus
+  0.5em minus 0.4em\relax Gravestein Highway North, California, USA: O'Reilly Media, 2014.
+
 \end{thebibliography}
 
 
