@@ -333,7 +333,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Comparação de desempenho de algoritmo de segmentação de imagem entre Plataformas Linux}
+\title{Comparação de desempenho de algoritmo de segmentação de imagem entre processadores ARM com sistema operacional Linux}
 
 
 % author names and affiliations
@@ -341,16 +341,16 @@
 % affiliations
 \author{
 
-\IEEEauthorblockN{Nilson Monteiro de Oliveira}
-\IEEEauthorblockA{Universidade do Estado do Amazonas\\
-Escola Superior de Tecnologia\\
-Manaus, Amazonas 69044-520\\
-Email: nilsonmont.o@gmail.com}
-%\IEEEauthorblockN{Joaci Morais}
+%\IEEEauthorblockN{Joaci Otaviano de Morais}
 %\IEEEauthorblockA{Universidade do Estado do Amazonas\\
 %Escola Superior de Tecnologia\\
-%Manaus, Amazonas 69000-000\\
-%Email: joaci.morais@gmail.com}
+%Manaus, Amazonas 69044-520\\
+%Email: nilsonmont.o@gmail.com}
+\IEEEauthorblockN{Joaci Otaviano de Morais}
+\IEEEauthorblockA{Universidade do Estado do Amazonas\\
+Escola Superior de Tecnologia\\
+Manaus, Amazonas 69076-781\\
+Email: joaci.morais@gmail.com}
 %\and
 %\IEEEauthorblockN{Antônio Soares}
 %\IEEEauthorblockA{Universidade do Estado do Amazonas\\
@@ -397,7 +397,7 @@ Email: nilsonmont.o@gmail.com}
 % in the abstract
 \begin{abstract}
 %This paper intends to do a performance analysis of a background subtraction algorithm in different %embedded platforms, such as Raspberry Pi 2 and CubieBoard 2. The goal is to verify its performance in %both CPU and GPU in order to determine if any of then is appropriate to do real time image operations.
-Este artigo tem por objetivo realizar uma análise comparativa de performance de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra um Computador Intel Core I5. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma linux embarcada.
+Este artigo tem por objetivo realizar uma análise comparativa de performance de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra uma Cubieboard 2. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma arm com linux embarcado.
 
 %\vspace{8pt}
 
@@ -427,11 +427,19 @@ Muitas aplicações na área de visão computacional utilizam como etapa inicial
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
-O uso dessas novas plataformas tem se difundido em grande parte pelo seu custo acessível, mas também pelos constantes incrementos em suas capacidades de processamento, o que as habilita a desempenhar tarefas cada vez mais complexas. Nesse contexto, propõe-se a avaliação de desempenho computacional de um algoritmo, não paramétrico e estatístico descrito em \cite{IEEEhowto:horprasert}, embarcado na plataforma Raspberry PI 2 (RPI2) e comparado com o desempenho da mesma aplicação em um computador Intel Core I5, a fim de que se tenha uma estimativa da diferença de desempenho entre estas plataformas e para que se possa avaliar a viabilidade de embarcar o algoritmo para uma possível aplicação \textit{stand-alone} no RPI2.
+O uso dessas novas plataformas tem se difundido em grande parte pelo seu custo acessível, mas também pelos constantes incrementos em suas capacidades de processamento, o que as habilita a desempenhar tarefas cada vez mais complexas. Nesse contexto, propõe-se a avaliação de desempenho computacional de um algoritmo, não paramétrico e estatístico descrito em \cite{IEEEhowto:horprasert}, embarcado na plataforma Raspberry PI 2 (RPI2) e comparado com o desempenho da mesma aplicação em uma Cubieboard 2 (CB2), a fim de que se tenha uma estimativa da diferença de desempenho entre estas plataformas e para que se possa avaliar a viabilidade de embarcar o algoritmo para uma possível aplicação \textit{stand-alone} nos processadores ARM.
 
 
-O RPI2  é composto por um SoC (\textit{System on Chip}) com CPU de quatro núcleos a 900MHz e arquitetura de 32 Bits, já o computador é um Intel Core I5-3337U, com CPU de dois núcleos a 1.8GHz e arquitetura de 64 Bits. Pretende-se efetuar a implementação do referido algoritmo para execução em ambas as plataformas em Python juntamente com a biblioteca OpenCV, objetivando a execução do mesmo na CPU de cada uma das plataformas, respectivamente, avaliando a viabilidade da utilização do RPI2 para uma aplicação de processamento de imagem em tempo real.
+\section{Plataformas de Desenvolvimento com Processadores ARM}
 
+A Cubieboard 2 e o Raspberry PI 2 são plataformas de desenvolvimento de muito baixo custo girando em torno dos \$40. Podem ser utilizadas desde aplicações simples utilizando suas portas de entrada e saída tanto para aplicações que exigem de processamento de dados, controle de vários dispositivos, periféricos e também com aplicaçoes gráficas.
+
+\subsection{Cubieboard 2}
+É uma plataforma composta por uma cpu ARM® Cortex™-A7 32 bits com dois núcleos trabalhando a 1GHz de velocidade, 1GB de memória ram, 4GB de memória NAND flash e chip de aceleração gráfica ARM Mali-400 MP2, possui também duas portas usb, uma porta ethernet, uma porta sata, um leitor de sdcard, 96 pinos de gpio e uma saída de vídeo HDMI. Compatível os sistemas operacionais Linux e Android, a CB2 torna-se muito atraente para aplicações gráficas em virtude das milhares de biblioteras open-souce disponíveis para Linux e também compatível com os milhares de aplicativos já desenvolvidos para o sistema Android.
+
+
+\subsection{Raspberry PI 2}
+O RPI2  é composto por um SoC (\textit{System on Chip}) com cpu ARM® Cortex™-A7 32 bits de quatro núcleos a 900MHz, 1GB de memória ram, chip de aceleração gráfica VideoCore IV 3D graphics core, possui também duas portas usb, um leitor de sdcard, 40 pinos de gpio, uma porta ethernet e uma saída de vídeo HDMI. Compatível os sistemas operacionais Linux e Windows 10 e uma comnunidade imensa composta de sites, blogs, tutoriais e documentação, o RPI2 é sem dúvidas a plataforma mais conhecida pela comunidade de desenvolvimento de software na atualidade.
 
 
 \hfill 26 de Maio de 2016
