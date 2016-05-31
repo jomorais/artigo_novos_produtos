@@ -153,160 +153,6 @@
 % http://www.tug.org/applications/pdftex
 
 
-
-
-
-% *** MATH PACKAGES ***
-%
-%\usepackage{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics.
-%
-% Note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/amsmath
-
-
-
-
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/pkg/algorithms
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/pkg/algorithmicx
-
-
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
-
-
-% *** SUBFIGURE PACKAGES ***
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
-% for subfigure.sty, the latter of which is no longer maintained and is
-% incompatible with some LaTeX packages including fixltx2e. However,
-% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
-% which will override IEEEtran.cls' handling of captions and this will result
-% in non-IEEE style figure/table captions. To prevent this problem, be sure
-% and invoke subfig.sty's "caption=false" package option (available since
-% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
-% handling of captions.
-% Note that the Computer Society format requires a larger sans serif font
-% than the serif footnote size font used in traditional IEEE formatting
-% and thus the need to invoke different subfig.sty package options depending
-% on whether compsoc mode has been enabled.
-%
-% The latest version and documentation of subfig.sty can be obtained at:
-% http://www.ctan.org/pkg/subfig
-
-
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure.
-% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
-% corrections already built into the system in which case a warning will
-% be issued if an attempt is made to load fixltx2e.sty as it is no longer
-% needed.
-% The latest version and documentation can be found at:
-% http://www.ctan.org/pkg/fixltx2e
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/stfloats
-% Do not use the stfloats baselinefloat ability as the IEEE does not allow
-% \baselineskip to stretch. Authors submitting work to the IEEE should note
-% that the IEEE rarely uses double column equations and that authors should try
-% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
-% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
-% such ways.
-% Do not attempt to use stfloats with fixltx2e as they are incompatible.
-% Instead, use Morten Hogholm'a dblfloatfix which combines the features
-% of both fixltx2e and stfloats:
-%
-% \usepackage{dblfloatfix}
-% The latest version can be found at:
-% http://www.ctan.org/pkg/dblfloatfix
-
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/url
-% Basically, \url{my_url_here}.
-
-
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage[brazilian]{babel}
@@ -359,64 +205,18 @@ Email: joaci.morais@gmail.com}
 %Email: antoniodepadua27@gmail.com}
 }
 
-% conference papers do not typically use \thanks and this command
-% is locked out in conference mode. If really needed, such as for
-% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
-% after \documentclass
-
-% for over three affiliations, or if they all won't fit within the width
-% of the page, use this alternative format:
-% 
-%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
-%Homer Simpson\IEEEauthorrefmark{2},
-%James Kirk\IEEEauthorrefmark{3}, 
-%Montgomery Scott\IEEEauthorrefmark{3} and
-%Eldon Tyrell\IEEEauthorrefmark{4}}
-%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
-%Georgia Institute of Technology,
-%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
-%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
-%Email: homer@thesimpsons.com}
-%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
-%Telephone: (800) 555--1212, Fax: (888) 555--1212}
-%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
-
-
-
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
-
 % make the title area
 \maketitle
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-%This paper intends to do a performance analysis of a background subtraction algorithm in different %embedded platforms, such as Raspberry Pi 2 and CubieBoard 2. The goal is to verify its performance in %both CPU and GPU in order to determine if any of then is appropriate to do real time image operations.
 Este artigo tem por objetivo realizar uma análise comparativa de performance de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra uma Cubieboard 2. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma arm com linux embarcado.
-
-%\vspace{8pt}
 
 Palavras-Chave: Linux, Python, OpenCV, Segmentação de Imagem
 \end{abstract}
 
-% no keywords
 
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
 
@@ -434,20 +234,36 @@ O uso dessas novas plataformas tem se difundido em grande parte pelo seu custo a
 
 \section{Plataformas de Desenvolvimento com Processadores ARM}
 
-A Cubieboard 2 e o Raspberry PI 2 são plataformas de desenvolvimento de muito baixo custo girando em torno dos \$40. Podem ser utilizadas desde aplicações simples utilizando suas portas de entrada e saída tanto para aplicações que exigem de processamento de dados, controle de vários dispositivos, periféricos e também com aplicaçoes gráficas.
+A Cubieboard 2 e o Raspberry PI 2 são plataformas de desenvolvimento de muito baixo custo girando em torno dos \$40. Podem ser utilizadas desde aplicações simples utilizando suas portas de entrada e saída tanto para aplicações que exigem de processamento de dados, controle de vários dispositivos, periféricos e também em aplicações gráficas.
 
 \subsection{Cubieboard 2}
-É uma plataforma composta por uma cpu ARM® Cortex™-A7 32 bits com dois núcleos trabalhando a 1GHz de velocidade, 1GB de memória ram, 4GB de memória NAND flash e chip de aceleração gráfica ARM Mali-400 MP2, possui também duas portas usb, uma porta ethernet, uma porta sata, um leitor de sdcard, 96 pinos de gpio e uma saída de vídeo HDMI. Compatível os sistemas operacionais Linux e Android, a CB2 torna-se muito atraente para aplicações gráficas em virtude das milhares de biblioteras open-souce disponíveis para Linux e também compatível com os milhares de aplicativos já desenvolvidos para o sistema Android.
+É uma plataforma composta por uma cpu ARM® Cortex™-A7 32 bits com dois núcleos trabalhando a 1GHz de velocidade, 1GB de memória ram, 4GB de memória NAND flash e chip de aceleração gráfica ARM Mali-400 MP2, possui também duas portas usb, uma porta ethernet, uma porta sata, um leitor de sdcard, 96 pinos de gpio e uma saída de vídeo HDMI. Compatível os sistemas operacionais Linux e Android, a CB2 mostrada na Figura \ref{fig:plat_cb2} torna-se muito atraente para aplicações gráficas em virtude das milhares de biblioteras open-souce disponíveis para Linux e também compatível com os milhares de aplicativos já desenvolvidos para o sistema Android.
 
 
 \subsection{Raspberry PI 2}
-O RPI2  é composto por um SoC (\textit{System on Chip}) com cpu ARM® Cortex™-A7 32 bits de quatro núcleos a 900MHz, 1GB de memória ram, chip de aceleração gráfica VideoCore IV 3D graphics core, possui também duas portas usb, um leitor de sdcard, 40 pinos de gpio, uma porta ethernet e uma saída de vídeo HDMI. Compatível os sistemas operacionais Linux e Windows 10 e uma extensa comunidade composta de sites, blogs, tutoriais e documentações, o RPI2 é sem dúvidas a plataforma mais conhecida pela área de desenvolvimento de software na atualidade.
+O RPI2  é composto por um SoC (\textit{System on Chip}) com cpu ARM® Cortex™-A7 32 bits de quatro núcleos a 900MHz, 1GB de memória ram, chip de aceleração gráfica VideoCore IV 3D graphics core, possui também duas portas usb, um leitor de sdcard, 40 pinos de gpio, uma porta ethernet e uma saída de vídeo HDMI. Compatível os sistemas operacionais Linux e Windows 10 e uma extensa comunidade composta de sites, blogs, tutoriais e documentações, o RPI2 mostrado na Figura \ref{fig:plat_rpi2} é sem dúvidas a plataforma mais conhecida pela área de desenvolvimento de software na atualidade.
+
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{cubieboard2}
+\caption{Cubieboard 2}
+\label{fig:plat_cb2}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{RaspberryPi2}
+\caption{Raspberry PI 2}
+\label{fig:plat_rpi2}
+\end{figure}
 
 
 \section{Segmentação de Imagem}
 Conforme proposto por Horpraset \textit{et al.} \cite{IEEEhowto:horprasert}, que descreve uma modelagem de cor que separa a imagem em duas componentes principais: brilho e cromaticidade, a primeira etapa do processo de segmentação é a modelagem do fundo, classificando cada pixel quanto à cor esperada, seu desvio padrão de cor e variações de desbalanço de brilho (\(\alpha\)) e desbalanço de cromaticidade (CD). Na sequencia é feita a normalização dos histogramas de \(\alpha\) e CD, uma vez que essas grandezas não apresentam distribuições gaussianas. Por fim, é possível fazer a classificação dos pixels em quatro categorias: Fundo Original (B), Sombra (S), Destaque de Fundo (H) e Objeto de Movimento (F), das quais a última é a de principal interesse, mapeando a localização da imagem que apresenta os limiares desejados de \(\alpha\) e CD para a extração do satisfatória da imagem de fundo.
 
-O referido algoritmo foi implementado na linguagem Python, que tem sido largamente utilizada em computação científica devido a características como sintaxe simplificada, modularidade, tipagem dinâmica, gerênciamento de memória automático dentre diversos outros recursos \cite{IEEEhowto:fangohr}. Utilizou-se também como arcabouço básico as bibliotecas Numpy, que disponibiliza recursos de algebra linear, e a biblioteca OpenCV que dispõe de recursos para manipulação de imagens. A figura \ref{fig:algoritmo} mostra o algoritmo implementado e abaixo podem ser observadas as primeiras linhas do \textit{script} desenvolvido, onde é possível ver a importação das referidas bibliotecas bem como a definição e configuração da resolução do dispositivo de captura de imagem:
+O referido algoritmo foi implementado na linguagem Python, que tem sido largamente utilizada em computação científica devido a características como sintaxe simplificada, modularidade, tipagem dinâmica, gerênciamento de memória automático dentre diversos outros recursos \cite{IEEEhowto:fangohr}. Utilizou-se também como arcabouço básico as bibliotecas Numpy, que disponibiliza recursos de algebra linear, e a biblioteca OpenCV que dispõe de recursos para manipulação de imagens. A figura \ref{fig:algoritmo} mostra um fluxograma do algoritmo implementado e abaixo podem ser observadas as primeiras linhas do \textit{script} desenvolvido, onde é possível ver a importação das referidas bibliotecas bem como a definição e configuração da resolução do dispositivo de captura de imagem:
 
 \lstinputlisting[firstline=2, lastline=9]{horprasert_rgb_image_cam.py}
 
@@ -463,9 +279,7 @@ Em linux, o driver responsável por comunicar com dispositivos de vídeos é o \
 \lstinputlisting[firstline=2, lastline=9]{config_cam.py}
 
 \section{Resultados}
-As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa na CubieBoard 2 e em um Raspberry Pi 2, respectivamente. Na CB2 foi utilizado como câmera a webcam usb KLIP KDC-600 2MP enquanto que no RPI2 foi utilizado um módulo de câmera próprio para a plataforma como fonte de imagens. A tabela \ref{tab:table_pc} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 512 frames executada na CB2, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando o RPI2 com 512 amostras.
-
-Com base nos resultados obtidos fica evidente o impacto das restrições de processamento da CB2 e RPI2 nas métricas da aplicação, no entanto, a diferença entre as duas plataformas é pequena como mostra a tabela x, onde observa-se que a média de quadros por segundo (fps - \textit{frames per second}) é pouco menor no RPI2. As figuras \ref{fig:processamento_pc} e \ref{fig:processamento_rpi} mostram a divisão do processamento com base nas médias de tempo necessário para a captura, processamento e visualização da imagem. Observa-se que na CB2, com um pouco mais recursos de processamento, o cálculo e segmentação do frame responde por pouco mais de 96\% enquanto que no RaspberryPi supera a marca de 98\% do tempo de processamento de um único frame.
+As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa na CubieBoard 2 e em um Raspberry Pi 2, respectivamente. Na CB2 foi utilizado como câmera a webcam usb KLIP KDC-600 2MP enquanto que no RPI2 foi utilizado um módulo de câmera próprio para a plataforma como fonte de imagens. A Tabela \ref{tab:table_cb2} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 728 frames executada na CB2, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando o RPI2 com 728 amostras.
 
 \begin{figure}[!t]
 \centering
@@ -481,102 +295,27 @@ Com base nos resultados obtidos fica evidente o impacto das restrições de proc
 \label{fig:sim_rpi}
 \end{figure}
 
-
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-
-% Note that the IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
-
-
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-%% if using array.sty, it might be a good idea to tweak the value of
-%% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+Com base nos resultados obtidos fica evidente o impacto das restrições de processamento da CB2 e RPI2 nas métricas da aplicação, no entanto, a diferença entre as duas plataformas é pequena como mostram as tabelas \ref{tab:table_cb2} e \ref{tab:table_rpi}, onde observa-se que a média de quadros por segundo (fps - \textit{frames per second}) é pouco menor no RPI2. As figuras \ref{fig:processamento_cb2} e \ref{fig:processamento_rpi} mostram a divisão do processamento com base nas médias de tempo necessário para a captura, processamento e visualização da imagem. Observa-se que na CB2, com um pouco mais recursos de processamento, o cálculo e segmentação do frame responde por pouco mais de 96\% enquanto que no RaspberryPi supera a marca de 98\% do tempo de processamento.
 
 
 \begin{table}[h]\centering
-\renewcommand{\arraystretch}{1.3}
-\caption{Resultados de Testes CB2 - 256 Amostras}
-\label{tab:table_pc}
+\renewcommand{\arraystretch}{1.75}
+\caption{Resultados de Testes CB2 - 728 Amostras}
+\label{tab:table_cb2}
 \begin{tabular}{|c|c|c|c|c|}
-
 \hline
 \textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Show (ms)} \\\hline \hline
 Média			& 5.656	& 5.445		&	170.71	&	1.47	\\ \hline
 Desv. Padrão	& 0.417	& 1.306		&	12.277	&	0.169	\\ \hline
 Máximo			& 6.873	& 12.475	&	196.18	&	2.100	\\ \hline
 Mínimo			& 4.928	& 4.463		&	139.550	&	1.223	\\ \hline
-
 \end{tabular}
 \end{table}
 
 \begin{table}[h]\centering
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.75}
 \caption{Taxa de Quadros por segundo no CB2 com multiprocessamento}
-\label{tab:table_rpi_cores_fps}
+\label{tab:table_cb2_cores_fps}
 \begin{tabular}{|c|c|c|c|c|}
 
 \hline
@@ -588,8 +327,8 @@ Mínimo			& 4.928	& 4.463		&	139.550	&	1.223	\\ \hline
 \end{table}
 
 \begin{table}[h]\centering
-\renewcommand{\arraystretch}{1.3}
-\caption{Resultados de Testes no RPI2 - 256 Amostras}
+\renewcommand{\arraystretch}{1.75}
+\caption{Resultados de Testes no RPI2 - 728 Amostras}
 \label{tab:table_rpi}
 \begin{tabular}{|c|c|c|c|c|}
 
@@ -604,95 +343,50 @@ Mínimo			& 2.878 & 1.057 &	129.112	&	1.207	\\ \hline
 \end{table}
 
 \begin{table}[h]\centering
-\renewcommand{\arraystretch}{1.3}
-\caption{Tempo de Cálculo no RPI2 com multiprocessamento}
-\label{tab:table_rpi_cores_calc}
+\renewcommand{\arraystretch}{1.75}
+\caption{Taxa de Quadros por segundo no RPI2 com multiprocessamento}
+\label{tab:table_rpi_cores_fps}
 \begin{tabular}{|c|c|c|c|c|}
 
 \hline
-\textbf{Núcleos} & \textbf{Média(ms)} & \textbf{Desv. Pad.} & \textbf{Máximo(ms)} & \textbf{Mínimo(ms)} \\\hline \hline
-1		&	237.238	&	81.743	&	907.257	&	189.361	\\ \hline
-2		&	284.69	&	30.285	&	377.081	&	237.914	\\ \hline
-3		&	370.628	&	45.942	&	502.834	&	269.318	\\ \hline
-4		&	493.771	&	99.771	&	820.219	&	257.473	\\ \hline
-
+\textbf{Núcleos} & \textbf{Média} & \textbf{Desvio Padrão} & \textbf{Máximo} & \textbf{Mínimo} \\\hline \hline
+1		& 4.647		& 0.637		&	5.840	&	1.283	\\ \hline
+2		& 9.999		& 6.262		&	60.557	&	4.458	\\ \hline
+3		& 17.747	& 19.065 	&	96.119	&	3.972	\\ \hline
+4		& 22.541	& 22.972	&	94.557	&	3.567	\\ \hline
 
 \end{tabular}
 \end{table}
 
+
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{Grafico_processamento_cb2_single_core}
+\includegraphics[width=2.0in]{Grafico_processamento_cb2_single_core}
 \caption{Divisão de Processamento CB2 (Single Core)}
-\label{fig:processamento_pc}
+\label{fig:processamento_cb2}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{Grafico_processamento_rpi2_single_core}
+\includegraphics[width=2.0in]{Grafico_processamento_rpi2_single_core}
 \caption{Divisão de Processamento RPI2 (Single Core)}
 \label{fig:processamento_rpi}
 \end{figure}
 
 
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
-
+\newpage
 Uma das razões para a característica observada é o fato de que o Python foi desenvolvido para ser executado em apenas um núcleo do processador, simplificando diversas questões inerentes à sistemas multiprocessados. No entanto, observando as restrições apresentadas pela aplicação no RPI2, foi feita a alteração no algoritmo para que o processamento fosse feito em mais de um núcleo, visando aumentar a taxa de quadros por segundo. A estratégia empregada se baseou na utilização do módulo \textit{Multiprocessing} do Python, que conforme descrito em \cite{IEEEhowto:micha} permite que processos da mesma aplicação sejam executados em núcleos distintos. A dificuldade fica por conta da necessidade de esses processos trocarem informação entre si, uma vez que são contextos completamente separados. A solução adotada foi a utilização de \textit{Queues} para enfileirar frames obtidos da câmera para serem processados e o mesmo tipo de estrutura para enfileirar o frame resultante de cada processo de segmentação para posterior exibição ao usuário. 
 
-A tabela \ref{tab:table_rpi_cores_fps} mostra o resultado da taxa de quadros por segundo para diferentes quantidades de núcleos de processamento. A tabela \ref{tab:table_rpi_cores_calc} mostra o resultado do tempo de processamento para as mesmas quantidades de núcleos do processador. Observa-se que com a utilização de mais de um núcleo foi possível melhor significativamente a taxa de quadros por segundo.
-
+As tabelas \ref{tab:table_cb2_cores_fps} e \ref{tab:table_rpi_cores_fps} mostra o resultado da taxa de quadros por segundo para diferentes quantidades de núcleos de processamento CB2 e RPI2 respectivamente. Observa-se que com a utilização de mais de um núcleo foi possível melhor significativamente a taxa de quadros por segundo.
 
 \section{Conclusão}
-Foi possível observar a grande quantidade de recursos disponibilizada pela linguagem Python, com destaque para as ferramentas de manipulação de imagens e de matrizes, que são de grande importância para o estudo em visão computacional. Outro ponto bastante interessante foi a portabilidade das aplicações desenvolvidas com base nessa linguagem, de modo que nenhuma alteração se fez necessária quando da execução do \textit{script} desenvolvido em uma plataforma embarcada.
+Foi possível observar a grande quantidade de recursos disponibilizada pela linguagem Python, com destaque para as ferramentas de manipulação de imagens e de matrizes, que são de grande importância para o estudo em visão computacional. Outro ponto bastante interessante foi a portabilidade das aplicações desenvolvidas com base nessa linguagem, de modo que nenhuma alteração se fez necessária quando da execução do \textit{script} desenvolvido nas duas plataformas embarcadas.
 
-No entanto, ficaram bastante claras as limitações da plataforma RPI2 com relação a um PC convencional devido à drástica queda na taxa de quadros processados por segundo quando utilizando apenas um núcleo. Considerando tal fator, foi avaliada a utilização de processamento paralelo, fazendo uso de todos os núcleos de processamento disponíveis na plataforma embarcada. Foi então observado que o aumento da média de quadros por segundo acompanhou linearmente o número de núcleos utilizados mesmo a despeito dos \textit{overheads} inerentes às estruturas de trocas de dados entre processos.
+No entanto, ficaram bastante claras as limitações da plataforma CB2 e RPI2 devido à drástica queda na taxa de quadros processados por segundo quando utilizando apenas um núcleo. Considerando tal fator, foi avaliada a utilização de processamento paralelo, fazendo uso de todos os núcleos de processamento disponíveis na plataforma embarcada. Foi então observado que o aumento da média de quadros por segundo acompanhou linearmente o número de núcleos utilizados mesmo a despeito dos \textit{overheads} inerentes às estruturas de trocas de dados entre processos.
 
-Observa-se, portanto, que é viável a utilização de uma plataforma com as características do RPI2 para a execução de uma aplicação de processamento de vídeo em tempo real, sendo bastante razoável para aplicações com exigências mínimas de 15 quadros por segundo, uma vez que foi possível a obtenção de taxas superiores a 20 fps. 
-
-
+Observa-se, portanto, que é viável a utilização de uma plataforma com processador ARM para a execução de uma aplicação de processamento de vídeo em tempo real, sendo bastante razoável para aplicações com exigências mínimas de 15 quadros por segundo, uma vez que foi possível a obtenção de taxas superiores a 20 fps. 
 
 
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgment
-%section*{Agradecimentos}
-%The authors would like to thank...
-
-
-
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
 \bibitem{IEEEhowto:sobral}
