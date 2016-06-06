@@ -211,7 +211,7 @@ Email: joaci.morais@gmail.com}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-Este artigo tem por objetivo realizar uma análise comparativa de desempenho de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra uma Cubieboard 2. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma arm com linux embarcado. Observou-se no decorrer da análise que o desempenho do algoritmo executado nas plataformas foi promissor alcançando taxas de superiores a 15 quadros por segundo em resolução de 320 x 240 \textit{pixels}.
+Este artigo tem por objetivo realizar uma análise comparativa de desempenho de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra uma Cubieboard 2. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma arm com linux embarcado. Observou-se no decorrer da análise que o desempenho do algoritmo executado nas plataformas foi promissor alcançando taxas de superiores a 15 quadros por segundo em resolução de 320 x 240 pixels.
 
 Palavras-Chave: Linux, Python, OpenCV, Segmentação de Imagem
 \end{abstract}
@@ -278,7 +278,7 @@ Em linux, o driver responsável por comunicar com dispositivos de vídeos é o \
 \lstinputlisting[firstline=2, lastline=9]{config_cam.py}
 
 \section{Resultados}
-As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa na CubieBoard 2 e em um Raspberry Pi 2, respectivamente. Na CB2 foi utilizado como câmera a webcam usb KLIP KDC-600 com resolução de 2M pixels enquanto que no RPI2 foi utilizado um módulo de câmera próprio com resolução de 5M pixels para a plataforma com como fonte de imagens. A Tabela \ref{tab:table_cb2} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 728 frames executada na CB2, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando o RPI2 com 728 amostras.
+As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa na CubieBoard 2 e em um Raspberry Pi 2, respectivamente. Na CB2 foi utilizado como câmera a webcam usb KLIP KDC-600 com resolução de 2M pixels enquanto que no RPI2 foi utilizado um módulo de câmera próprio para a plataforma com resolução de 5M pixels como fonte de imagens. A Tabela \ref{tab:table_cb2} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 728 frames executada na CB2, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando o RPI2 com 728 amostras.
 
 \begin{figure}[!t]
 \centering
