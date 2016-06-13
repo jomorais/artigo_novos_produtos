@@ -120,7 +120,7 @@
    \graphicspath{{images/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-   \DeclareGraphicsExtensions{.jpeg,.png}
+   \DeclareGraphicsExtensions{.jpg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -346,6 +346,7 @@
 Escola Superior de Tecnologia\\
 Manaus, Amazonas 69044-520\\
 Email: nilsonmont.o@gmail.com}
+%\and
 %\IEEEauthorblockN{Joaci Morais}
 %\IEEEauthorblockA{Universidade do Estado do Amazonas\\
 %Escola Superior de Tecnologia\\
@@ -397,7 +398,7 @@ Email: nilsonmont.o@gmail.com}
 % in the abstract
 \begin{abstract}
 %This paper intends to do a performance analysis of a background subtraction algorithm in different %embedded platforms, such as Raspberry Pi 2 and CubieBoard 2. The goal is to verify its performance in %both CPU and GPU in order to determine if any of then is appropriate to do real time image operations.
-Este artigo tem por objetivo realizar uma análise comparativa de performance de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra um Computador Intel Core I5. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma linux embarcada.
+Este artigo tem por objetivo realizar uma análise comparativa de desempenho de um algoritmo de subtração de fundo em diferentes plataformas linux, sendo uma o Raspberry Pi 2 e a outra um Computador Intel Core I5. As atividades fins são, em primeiro caso, verificar a diferença de desempenho entre ambas as plataformas, e em seguida determinar se é viável que uma aplicação com o propósito processamento de imagens em tempo real seja desempenhada em uma plataforma linux embarcada.
 
 %\vspace{8pt}
 
@@ -433,13 +434,19 @@ O uso dessas novas plataformas tem se difundido em grande parte pelo seu custo a
 O RPI2  é composto por um SoC (\textit{System on Chip}) com CPU de quatro núcleos a 900MHz e arquitetura de 32 Bits, já o computador é um Intel Core I5-3337U, com CPU de dois núcleos a 1.8GHz e arquitetura de 64 Bits. Pretende-se efetuar a implementação do referido algoritmo para execução em ambas as plataformas em Python juntamente com a biblioteca OpenCV, objetivando a execução do mesmo na CPU de cada uma das plataformas, respectivamente, avaliando a viabilidade da utilização do RPI2 para uma aplicação de processamento de imagem em tempo real.
 
 
-
-\hfill 26 de Maio de 2016
-
 \section{Segmentação de Imagem}
-Conforme proposto por Horpraset \textit{et al.} \cite{IEEEhowto:horprasert}, que descreve uma modelagem de cor que separa a imagem em duas componentes principais: brilho e cromaticidade, a primeira etapa do processo de segmentação é a modelagem do fundo, classificando cada pixel quanto à cor esperada, seu desvio padrão de cor e variações de desbalanço de brilho (\(\alpha\)) e desbalanço de cromaticidade (CD). Na sequencia é feita a normalização dos histogramas de \(\alpha\) e CD, uma vez que essas grandezas não apresentam distribuições gaussianas. Por fim, é possível fazer a classificação dos pixels em quatro categorias: Fundo Original (B), Sombra (S), Destaque de Fundo (H) e Objeto de Movimento (F), das quais a última é a de principal interesse, mapeando a localização da imagem que apresenta os limiares desejados de \(\alpha\) e CD para a extração do satisfatória da imagem de fundo.
+Na Figura \ref{fig:algoritmo} é ilustrado o diagrama em blocos do algoritmo de segmentação de objetos implementado nesse artigo baseado no trabalho proposto por Horpraset \textit{et al.} \cite{IEEEhowto:horprasert}.  Neste artigo é feita uma modelagem que separa a imagem em duas componentes principais: brilho e cromaticidade. A primeira etapa do processo de segmentação é a modelagem do fundo, classificando cada pixel quanto à cor esperada, seu desvio padrão de cor e variações de distorção de brilho (\(\alpha\)) e distorção de cor (CD). Na sequencia é feita a normalização dos histogramas de \(\alpha\) e CD, uma vez que essas grandezas não apresentam distribuições gaussianas. A partir dessas distribuições são estabelecidos os limiares de comparação de cada elemento de imagem. Dessa maneira é possível fazer a classificação dos pixels como pertencentes às seguintes categorias: Imagem de Fundo (B), Sombra (S) e Objeto (F), das quais a última é a de principal interesse, mapeando a localização da imagem que apresenta os limiares desejados de \(\alpha\) e CD para a extração do satisfatória da imagem de fundo. Toda etapa de modelagem da imagem de fundo é realizado sem a presença de objetos em movimento. São capturados 16 quadros para a obtenção dos parâmetros desse modelo. Durante a etapa de classificação, para cada pixel da imagem corrente, é efetuado o cálculo da distorção de cor e brilho que são comparados com os limiares previamente estabelecidos na etapa de aprendizado a fim de destacar os elementos de imagem pertencentes ao objeto.
 
-O referido algoritmo foi implementado na linguagem Python, que tem sido largamente utilizada em computação científica devido a características como sintaxe simplificada, modularidade, tipagem dinâmica, gerênciamento de memória automático dentre diversos outros recursos \cite{IEEEhowto:fangohr}. Utilizou-se também como arcabouço básico as bibliotecas Numpy, que disponibiliza recursos de algebra linear, e a biblioteca OpenCV que dispõe de recursos para manipulação de imagens. A figura \ref{fig:algoritmo} mostra o algoritmo implementado e abaixo podem ser observadas as primeiras linhas do \textit{script} desenvolvido, onde é possível ver a importação das referidas bibliotecas bem como a definição e configuração da resolução do dispositivo de captura de imagem:
+A Figura \ref{fig:rpi2_cam} mostra o RPI2 juntamente com seu módulo de câmera, que foram utilizados como plataforma-alvo das implementações desenvolvidas no presente trabalho.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{rpi2_cam}
+\caption{Raspberry Pi 2 com Módulo de Câmera}
+\label{fig:rpi2_cam}
+\end{figure}
+
+O algoritmo supracitado foi implementado na linguagem Python, que tem sido largamente utilizada em computação científica devido a características como sintaxe simplificada, modularidade, tipagem dinâmica, gerênciamento de memória automático dentre diversos outros recursos \cite{IEEEhowto:fangohr}. Utilizou-se também como arcabouço básico as bibliotecas Numpy, que disponibiliza recursos de algebra linear, e a biblioteca OpenCV que dispõe de recursos para manipulação de imagens. A seguir podem ser observadas as primeiras linhas do \textit{script} desenvolvido, onde é possível ver a importação das referidas bibliotecas bem como a definição e configuração da resolução do dispositivo de captura de imagem:
 
 \lstinputlisting[firstline=2, lastline=9]{horprasert_rgb_image_cam.py}
 
@@ -455,7 +462,7 @@ Em linux, o driver responsável por comunicar com dispositivos de vídeos é o \
 \lstinputlisting[firstline=2, lastline=9]{config_cam.py}
 
 \section{Resultados}
-As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa em um Notebook com processador Intel Core I5 e em um Raspberry Pi 2, respectivamente. No PC foi utilizado como câmera a webcam integrada enquanto que no RPI2 foi utilizado um módulo de câmera próprio para a plataforma como fonte de imagens. A tabela \ref{tab:table_pc} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 743 frames executada no Computador Intel Core I5, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando um computador o RPI2 com 728 amostras.
+As figuras \ref{fig:sim_pc} e \ref{fig:sim_rpi} mostram o resultado da execução do programa em um Notebook com processador Intel Core I5 e em um Raspberry Pi 2, respectivamente. No PC foi utilizado como câmera a webcam integrada enquanto que no RPI2 foi utilizado um módulo de câmera próprio para a plataforma como fonte de imagens, em ambos os casos a resolução foi fixada em 320 x 240 \textit{pixels}. A tabela \ref{tab:table_pc} mostra os parâmetros estatísticos obtidos a partir de uma simulação com o processamento de 743 frames executada no Computador Intel Core I5, enquanto que  a tabela \ref{tab:table_rpi} mostra os mesmos parâmetros para uma simulação utilizando um computador o RPI2 com 728 amostras.
 
 Com base nos resultados obtidos fica evidente o impacto das restrições de processamento do RPI2 nas métricas da aplicação, onde observa-se que a média de quadros por segundo (fps - \textit{frames per second}) é consideravelmente menor. As figuras \ref{fig:processamento_pc} e \ref{fig:processamento_rpi} mostram a divisão do processamento com base nas médias de tempo necessário para a captura, processamento e visualização da imagem. Observa-se que no computador, com mais recursos de processamento, o cálculo e segmentação do frame responde por pouco mais de 26\% enquanto que no RaspberryPi supera a marca de 98\% do tempo de processamento de um único frame.
 
@@ -556,7 +563,7 @@ Com base nos resultados obtidos fica evidente o impacto das restrições de proc
 \begin{tabular}{|c|c|c|c|c|}
 
 \hline
-\textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Show (ms)} \\\hline \hline
+\textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Exibição (ms)} \\\hline \hline
 Média			& 31.878	& 23.099	&	8.303	&	0.181	\\ \hline
 Desv. Padrão	& 2.825		& 2.846		&	1.565	&	0.042	\\ \hline
 Máximo			& 57.994	& 30.596 	&	19.748	&	0.709	\\ \hline
@@ -572,7 +579,7 @@ Mínimo			& 24.909	& 2.933 	&	6.115	&	0.139	\\ \hline
 \begin{tabular}{|c|c|c|c|c|}
 
 \hline
-\textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Show (ms)} \\\hline \hline
+\textbf{Parâmetro} & \textbf{fps} & \textbf{Captura (ms)} & \textbf{Calc (ms)} & \textbf{Exibição (ms)} \\\hline \hline
 Média			& 5.733 & 1.594	&	176.295	&	1.254	\\ \hline
 Desv. Padrão	& 0.903 & 0.304	&	31.113	&	0.038	\\ \hline
 Máximo			& 7.555 & 2.457 &	344.158	&	1.584	\\ \hline
@@ -642,7 +649,9 @@ Mínimo			& 2.878 & 1.057 &	129.112	&	1.207	\\ \hline
 
 Uma das razões para a característica observada é o fato de que o Python foi desenvolvido para ser executado em apenas um núcleo do processador, simplificando diversas questões inerentes à sistemas multiprocessados. No entanto, observando as restrições apresentadas pela aplicação no RPI2, foi feita a alteração no algoritmo para que o processamento fosse feito em mais de um núcleo, visando aumentar a taxa de quadros por segundo. A estratégia empregada se baseou na utilização do módulo \textit{Multiprocessing} do Python, que conforme descrito em \cite{IEEEhowto:micha} permite que processos da mesma aplicação sejam executados em núcleos distintos. A dificuldade fica por conta da necessidade de esses processos trocarem informação entre si, uma vez que são contextos completamente separados. A solução adotada foi a utilização de \textit{Queues} para enfileirar frames obtidos da câmera para serem processados e o mesmo tipo de estrutura para enfileirar o frame resultante de cada processo de segmentação para posterior exibição ao usuário. 
 
-A tabela \ref{tab:table_rpi_cores_fps} mostra o resultado da taxa de quadros por segundo para diferentes quantidades de núcleos de processamento. A tabela \ref{tab:table_rpi_cores_calc} mostra o resultado do tempo de processamento para as mesmas quantidades de núcleos do processador. Observa-se que com a utilização de mais de um núcleo foi possível melhor significativamente a taxa de quadros por segundo.
+A tabela \ref{tab:table_rpi_cores_fps} mostra o resultado da taxa de quadros por segundo para diferentes quantidades de núcleos de processamento. A tabela \ref{tab:table_rpi_cores_calc} mostra o resultado do tempo de processamento para as mesmas quantidades de núcleos do processador. Observa-se que com a utilização de mais de um núcleo foi possível melhorar significativamente a taxa de quadros por segundo.
+
+Observando-se os resultados visuais obtidos em função das correções automáticas da câmera, e do próprio ruído gerado durante a captura das imagens, houve alguns falsos positivos, isto é, elementos de imagem que pertencem à imagem de fundo que foram classificados como objetos e dinamicamente são modificados em função do objeto no cenário. No entanto, a segmentação mostrou-se robusta no cenário de testes utilizado e não apresentou rastros de movimento, pois a taxa de processamento foi acima de 15 quadros por segundo.
 
 
 \section{Conclusão}
